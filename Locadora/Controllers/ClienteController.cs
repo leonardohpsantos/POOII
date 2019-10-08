@@ -11,8 +11,7 @@ namespace Locadora.Controllers
         // GET: Cliente
         public ActionResult Index()
         {
-            Aplication.ClienteAP.Buscar();
-            return View();
+            return View(Aplication.ClienteAP.Buscar());
         }
 
         // GET: Cliente/Details/5
