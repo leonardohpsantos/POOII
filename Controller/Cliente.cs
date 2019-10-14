@@ -1,19 +1,19 @@
-﻿using Locadora.Models;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Locadora.Aplication
+namespace Controler
 {
-    public class ClienteAP
+    public class Cliente
     {
-        public static string strConection = ConfigurationManager.AppSettings["connection"].ToString();
+        private static string strConection = ConfigurationManager.AppSettings["connection"].ToString();
 
-        public static List<Cliente> Buscar()
+        public static List<Models.Cliente> Buscar()
         {
             using (MySqlConnection conn = new MySqlConnection(strConection))
             {
@@ -31,7 +31,7 @@ namespace Locadora.Aplication
                         DataSet ds = new DataSet();
                         da.Fill(ds, "Cliente");
 
-                        List<Cliente> lstRetorno = ds.Tables["Cliente"].AsEnumerable().Select(x => new Cliente
+                        List<Models.Cliente> lstRetorno = ds.Tables["Cliente"].AsEnumerable().Select(x => new Models.Cliente
                         {
                             Id = x.Field<int>("id"),
                             Nome = x.Field<string>("nome"),

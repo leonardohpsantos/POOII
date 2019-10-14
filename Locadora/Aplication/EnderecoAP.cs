@@ -1,4 +1,4 @@
-﻿using Locadora.Models;
+﻿using Models;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,7 @@ namespace Locadora.Aplication
 {
     public class EnderecoAP
     {
-        public static string strConection = ConfigurationManager.AppSettings["connection"].ToString();
+        private static string strConection = ConfigurationManager.AppSettings["connection"].ToString();
 
         public static List<Endereco> Buscar()
         {
