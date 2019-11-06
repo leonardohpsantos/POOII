@@ -32,7 +32,6 @@ namespace Locadora.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
                 Controller.Cliente.Salvar(cliente);
                 return RedirectToAction("Index");
             }
@@ -54,7 +53,6 @@ namespace Locadora.Controllers
         {
             try
             {
-                // TODO: Add update logic here
                 Controller.Cliente.Salvar(cliente);
                 return RedirectToAction("Index");
             }
@@ -77,7 +75,7 @@ namespace Locadora.Controllers
             try
             {
                 // TODO: Add delete logic here
-
+                Controller.Cliente.Excluir(id);
                 return RedirectToAction("Index");
             }
             catch

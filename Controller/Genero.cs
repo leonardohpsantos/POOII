@@ -66,6 +66,23 @@ namespace Controller
             }
         }
 
+        public static void Excluir(int id)
+        {
+            using (MySqlConnection conn = new MySqlConnection(strConection))
+            {
+                conn.Open();
+
+                using (MySqlCommand cmd = new MySqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = @"DELETE FROM genero WHERE id = ?id";
+                    cmd.Parameters.AddWithValue("?id", id);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
         public static Models.Genero BuscarPorId(int clienteId)
         {
             using (MySqlConnection conn = new MySqlConnection(strConection))

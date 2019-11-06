@@ -26,7 +26,6 @@ namespace Locadora.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
                 Controller.Genero.Salvar(genero);
                 return RedirectToAction("Index");
             }
@@ -48,7 +47,6 @@ namespace Locadora.Controllers
         {
             try
             {
-                // TODO: Add update logic here
                 Controller.Genero.Salvar(genero);
                 return RedirectToAction("Index");
             }
@@ -61,17 +59,16 @@ namespace Locadora.Controllers
         // GET: Genero/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(Controller.Genero.BuscarPorId(id));
         }
 
         // POST: Genero/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, Models.Genero genero)
         {
             try
             {
-                // TODO: Add delete logic here
-
+                Controller.Genero.Excluir(id);
                 return RedirectToAction("Index");
             }
             catch

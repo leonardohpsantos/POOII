@@ -189,6 +189,8 @@
     <Content Include="Views\Cliente\Edit.cshtml" />
     <Content Include="Views\Genero\Index.cshtml" />
     <Content Include="Views\Genero\Create.cshtml" />
+    <Content Include="Views\Genero\Edit.cshtml" />
+    <Content Include="Views\Genero\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
