@@ -8,5 +8,6 @@ namespace Models
 {
     public class Produtora : Basico
     {
+        public string Nome { get; set; }
     }
 }

@@ -1,22 +1,22 @@
-﻿@model Models.Genero
+﻿@model Models.Classificacao
 
 @{
-    ViewBag.Title = "Gênero";
+    ViewBag.Title = "Class.";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Apagar Gênero</h2>
+<h2>Apagar Classificação</h2>
 
-<h3>Voçê tem certeza que deseja deletar esse gênero?</h3>
+<h3>Deseja realmente deletar essa classificação?</h3>
 <div>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Tipo)
+            @Html.DisplayNameFor(model => model.FaixaEtaria)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Tipo)
+            @Html.DisplayFor(model => model.FaixaEtaria)
         </dd>
 
     </dl>
@@ -25,7 +25,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <input type="submit" value="Delete" class="btn btn-default" /> |
             <a class="btn btn-default" href="@Url.Action("Index")">Voltar</a>
         </div>
     }

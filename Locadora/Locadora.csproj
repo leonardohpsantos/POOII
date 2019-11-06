@@ -138,9 +138,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ClassificacaoController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\GeneroController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProdutoraController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -191,6 +193,13 @@
     <Content Include="Views\Genero\Create.cshtml" />
     <Content Include="Views\Genero\Edit.cshtml" />
     <Content Include="Views\Genero\Delete.cshtml" />
+    <Content Include="Views\Classificacao\Index.cshtml" />
+    <Content Include="Views\Classificacao\Create.cshtml" />
+    <Content Include="Views\Classificacao\Edit.cshtml" />
+    <Content Include="Views\Classificacao\Delete.cshtml" />
+    <Content Include="Views\Produtora\Index.cshtml" />
+    <Content Include="Views\Produtora\Create.cshtml" />
+    <Content Include="Views\Produtora\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

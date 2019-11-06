@@ -52,8 +52,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classificacao.cs" />
     <Compile Include="Cliente.cs" />
+    <Compile Include="Filme.cs" />
     <Compile Include="Genero.cs" />
+    <Compile Include="Produtora.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
