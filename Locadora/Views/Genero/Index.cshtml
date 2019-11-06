@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Models.Genero>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista Genero</h2>
+
+<p>
+    <a class="btn btn-primary" href="@Url.Action("Create")">Novo</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Tipo)
+    </td>
+    <td>
+        <div class="btn btn-group">
+            <a class="btn btn-success" href="@Url.Action("Edit", new { id = item.Id })">Editar</a>
+            <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.Id })">Excluir</a>
+        </div>
+    </td>
+</tr>
+}
+
+</table>

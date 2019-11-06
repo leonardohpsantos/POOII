@@ -6,34 +6,28 @@ using System.Web.Mvc;
 
 namespace Locadora.Controllers
 {
-    public class ClienteController : System.Web.Mvc.Controller
+    public class GeneroController : System.Web.Mvc.Controller
     {
-        // GET: Cliente
+        // GET: Genero
         public ActionResult Index()
         {
-            return View(Controller.Cliente.Listar());
+            return View(Controller.Genero.Listar());
         }
 
-        // GET: Cliente/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Cliente/Create
+        // GET: Genero/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Cliente/Create
+        // POST: Genero/Create
         [HttpPost]
-        public ActionResult Create(Models.Cliente cliente)
+        public ActionResult Create(Models.Genero genero)
         {
             try
             {
                 // TODO: Add insert logic here
-                Controller.Cliente.Salvar(cliente);
+                Controller.Genero.Salvar(genero);
                 return RedirectToAction("Index");
             }
             catch
@@ -42,20 +36,20 @@ namespace Locadora.Controllers
             }
         }
 
-        // GET: Cliente/Edit/5
+        // GET: Genero/Edit/5
         public ActionResult Edit(int id)
         {
-            return View(Controller.Cliente.BuscarPorId(id));
+            return View();
         }
 
-        // POST: Cliente/Edit/5
+        // POST: Genero/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, Models.Cliente cliente)
+        public ActionResult Edit(Models.Genero genero)
         {
             try
             {
                 // TODO: Add update logic here
-                Controller.Cliente.Salvar(cliente);
+                Controller.Genero.Salvar(genero);
                 return RedirectToAction("Index");
             }
             catch
@@ -64,13 +58,13 @@ namespace Locadora.Controllers
             }
         }
 
-        // GET: Cliente/Delete/5
+        // GET: Genero/Delete/5
         public ActionResult Delete(int id)
         {
-            return View(Controller.Cliente.BuscarPorId(id));
+            return View();
         }
 
-        // POST: Cliente/Delete/5
+        // POST: Genero/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {

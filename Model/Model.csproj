@@ -43,8 +43,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Basico.cs" />
+    <Compile Include="Classificacao.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="Endereco.cs" />
+    <Compile Include="Filme.cs" />
+    <Compile Include="Genero.cs" />
+    <Compile Include="Produtora.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Telefone.cs" />
   </ItemGroup>

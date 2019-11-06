@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace Controller
 {
-    public class Cliente
+    public class Genero
     {
         private static string strConection = ConfigurationManager.AppSettings["connection"].ToString();
 
-        public static List<Models.Cliente> Listar()
+        public static List<Models.Genero> Listar()
         {
             using (MySqlConnection conn = new MySqlConnection(strConection))
             {
@@ -22,7 +22,7 @@ namespace Controller
                 using (MySqlCommand cmd = new MySqlCommand())
                 {
                     cmd.Connection = conn;
-                    cmd.CommandText = @"SELECT * FROM cliente";
+                    cmd.CommandText = @"SELECT * FROM genero";
 
                     using (MySqlDataAdapter da = new MySqlDataAdapter())
                     {
@@ -31,12 +31,10 @@ namespace Controller
                         DataSet ds = new DataSet();
                         da.Fill(ds, "Cliente");
 
-                        List<Models.Cliente> lstRetorno = ds.Tables["Cliente"].AsEnumerable().Select(x => new Models.Cliente
+                        List<Models.Genero> lstRetorno = ds.Tables["Cliente"].AsEnumerable().Select(x => new Models.Genero
                         {
                             Id = x.Field<int>("id"),
-                            Nome = x.Field<string>("nome"),
-                            Email = x.Field<string>("email"),
-                            Cpf = x.Field<string>("cpf")
+                            Tipo = x.Field<string>("tipo")
                         }).ToList();
 
                         return lstRetorno;
@@ -45,7 +43,7 @@ namespace Controller
             }
         }
 
-        public static void Salvar(Models.Cliente cliente)
+        public static void Salvar(Models.Genero genero)
         {
             using (MySqlConnection conn = new MySqlConnection(strConection))
             {
@@ -55,22 +53,20 @@ namespace Controller
                 {
                     cmd.Connection = conn;
 
-                    if (cliente.Id == 0)
-                        cmd.CommandText = @"INSERT INTO cliente (nome, email, cpf) VALUES (?nome, ?email, ?cpf);";
+                    if (genero.Id == 0)
+                        cmd.CommandText = @"INSERT INTO genero (tipo) VALUES (?tipo);";
                     else
-                        cmd.CommandText = @"UPDATE cliente SET nome = ?nome, email = ?email, cpf = ?cpf WHERE id = ?id;";
+                        cmd.CommandText = @"UPDATE genero SET tipo = ?tipo WHERE id = ?id;";
 
-                    cmd.Parameters.AddWithValue("?nome", cliente.Nome);
-                    cmd.Parameters.AddWithValue("?email", cliente.Email);
-                    cmd.Parameters.AddWithValue("?cpf", cliente.Cpf);
-                    cmd.Parameters.AddWithValue("?id", cliente.Id);
+                    cmd.Parameters.AddWithValue("?tipo", genero.Tipo);
+                    cmd.Parameters.AddWithValue("?id", genero.Id);
 
                     cmd.ExecuteNonQuery();
                 }
             }
         }
 
-        public static Models.Cliente BuscarPorId(int clienteId)
+        public static Models.Genero BuscarPorId(int clienteId)
         {
             using (MySqlConnection conn = new MySqlConnection(strConection))
             {
@@ -79,19 +75,17 @@ namespace Controller
                 using (MySqlCommand cmd = new MySqlCommand())
                 {
                     cmd.Connection = conn;
-                    cmd.CommandText = @"SELECT * FROM cliente WHERE id = ?id";
+                    cmd.CommandText = @"SELECT * FROM genero WHERE id = ?id";
                     cmd.Parameters.AddWithValue("?id", clienteId);
 
                     MySqlDataReader reader = cmd.ExecuteReader();
 
-                    Models.Cliente retorno = new Models.Cliente();
+                    Models.Genero retorno = new Models.Genero();
 
                     while (reader.Read())
                     {
                         retorno.Id = (int)reader["Id"];
-                        retorno.Nome = (string)reader["Nome"];
-                        retorno.Email = (string)reader["Email"];
-                        retorno.Cpf = (string)reader["cpf"];
+                        retorno.Tipo = (string)reader["tipo"];
                     }
 
                     return retorno;

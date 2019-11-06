@@ -11,8 +11,7 @@ namespace Models
         [Required]
         public string Nome { get; set; }
         public string Email { get; set; }
-        [MinLength(11, ErrorMessage = "O cpf deve ter 11 numeros")]
-        [MaxLength(11, ErrorMessage = "O cpf deve ter 11 numeros")]
+        [Display(Name ="Documento")]
         public string Cpf { get; set; }
 
         public virtual List<Endereco> Enderecos { get; set; }
