@@ -1,22 +1,20 @@
-﻿@model Models.Classificacao
+﻿@model Models.Produtora
 
 @{
-    ViewBag.Title = "Class.";
+    ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Apagar Classificação</h2>
-
-<h3>Deseja realmente deletar essa classificação?</h3>
+<h3>Deseja realmente deletar essa produtora?</h3>
 <div>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.FaixaEtaria)
+            @Html.DisplayNameFor(model => model.Nome)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FaixaEtaria)
+            @Html.DisplayFor(model => model.Nome)
         </dd>
 
     </dl>

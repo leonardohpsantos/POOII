@@ -38,17 +38,16 @@ namespace Locadora.Controllers
         // GET: Produtora/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            return View(Controller.Produtora.BuscarPorId(id));
         }
 
         // POST: Produtora/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Models.Produtora produtora)
         {
             try
             {
-                // TODO: Add update logic here
-
+                Controller.Produtora.Salvar(produtora);
                 return RedirectToAction("Index");
             }
             catch
@@ -60,7 +59,7 @@ namespace Locadora.Controllers
         // GET: Produtora/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(Controller.Produtora.BuscarPorId(id));
         }
 
         // POST: Produtora/Delete/5
@@ -69,8 +68,7 @@ namespace Locadora.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
-
+                Controller.Produtora.Excluir(id);
                 return RedirectToAction("Index");
             }
             catch

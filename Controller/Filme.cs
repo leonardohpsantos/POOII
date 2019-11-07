@@ -115,5 +115,7 @@ namespace Controller
                 }
             }
         }
+
+        public static Models.FilmeCompleto BuscarFilmeCompletoPorId { get; set; }
     }
 }
