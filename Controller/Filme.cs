@@ -145,7 +145,7 @@ namespace Controller
                                         INNER JOIN produtora AS p ON (p.id = f.idProdutora)
                                         INNER JOIN genero AS g ON (g.id = f.idGenero)
                                         INNER JOIN classificacao AS c ON (c.id = f.idClassificacao)
-                                        WHERE id = ?id";
+                                        WHERE f.id = ?id";
 
                     cmd.Parameters.AddWithValue("?id", id);
 
@@ -160,11 +160,15 @@ namespace Controller
                         retorno.Ano = (int)reader["ano"];
                         retorno.Titulo = (string)reader["titulo"];
 
-                        if (reader["idClassificao"] != DBNull.Value)
+                        retorno.ClassificacaoId = (int)reader["idClassificacao"];
+                        retorno.GeneroId = (int)reader["idGenero"];
+                        retorno.ProdutoraId = (int)reader["idProdutora"];
+
+                        if (reader["idClassificacao"] != DBNull.Value)
                         {
                             retorno.Classificacao = new Models.Classificacao
                             {
-                                Id = (int)reader["IdClassificacao"],
+                                Id = (int)reader["idClassificacao"],
                                 FaixaEtaria = (string)reader["faixaEtaria"]
                             };
                         }
@@ -173,7 +177,7 @@ namespace Controller
                         {
                             retorno.Produtora = new Models.Produtora
                             {
-                                Id = (int)reader["IdClassificacao"],
+                                Id = (int)reader["idProdutora"],
                                 Nome = (string)reader["nome"]
                             };
                         }
@@ -182,7 +186,7 @@ namespace Controller
                         {
                             retorno.Genero = new Models.Genero
                             {
-                                Id = (int)reader["IdClassificacao"],
+                                Id = (int)reader["idGenero"],
                                 Tipo = (string)reader["tipo"]
                             };
                         }

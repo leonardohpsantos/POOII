@@ -199,6 +199,7 @@
     <Content Include="Views\Produtora\Delete.cshtml" />
     <Content Include="Views\Filme\Index.cshtml" />
     <Content Include="Views\Filme\Create.cshtml" />
+    <Content Include="Views\Filme\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

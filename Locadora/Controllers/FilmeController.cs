@@ -41,7 +41,10 @@ namespace Locadora.Controllers
         // GET: Filme/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            ViewBag.Classificacao = Controller.ItensSelecao.Classificacao.GetSelectListItems;
+            ViewBag.Genero = Controller.ItensSelecao.Genero.GetSelectListItems;
+            ViewBag.Produtora = Controller.ItensSelecao.Produtora.GetSelectListItems;
+            return View(Controller.Filme.BuscarFilmeCompletoPorId(id));
         }
 
         // POST: Filme/Edit/5
