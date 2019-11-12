@@ -197,11 +197,12 @@
     <Content Include="Views\Produtora\Create.cshtml" />
     <Content Include="Views\Produtora\Edit.cshtml" />
     <Content Include="Views\Produtora\Delete.cshtml" />
+    <Content Include="Views\Filme\Index.cshtml" />
+    <Content Include="Views\Filme\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Filme\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

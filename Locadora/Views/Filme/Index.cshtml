@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Models.Filme>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista de Filmes</h2>
+
+<p>
+    <a class="btn btn-primary" href="@Url.Action("Create")">Novo</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Duracao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ano)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Titulo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Duracao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ano)
+        </td>
+        <td>
+            <div class="btn btn-group">
+                <a class="btn btn-success" href="@Url.Action("Edit", new { id = item.Id })">Editar</a>
+                <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.Id })">Excluir</a>
+            </div>
+        </td>
+    </tr>
+}
+
+</table>

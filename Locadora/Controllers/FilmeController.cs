@@ -11,29 +11,25 @@ namespace Locadora.Controllers
         // GET: Filme
         public ActionResult Index()
         {
-            return View();
-        }
-
-        // GET: Filme/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
+            return View(Controller.Filme.Listar());
         }
 
         // GET: Filme/Create
         public ActionResult Create()
         {
+            ViewBag.Classificacao = Controller.ItensSelecao.Classificacao.GetSelectListItems;
+            ViewBag.Genero = Controller.ItensSelecao.Genero.GetSelectListItems;
+            ViewBag.Produtora = Controller.ItensSelecao.Produtora.GetSelectListItems;
             return View();
         }
 
         // POST: Filme/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Models.Filme filme)
         {
             try
             {
-                // TODO: Add insert logic here
-
+                Controller.Filme.Salvar(filme);
                 return RedirectToAction("Index");
             }
             catch

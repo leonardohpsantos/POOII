@@ -22,14 +22,14 @@ namespace Controller
                 using (MySqlCommand cmd = new MySqlCommand())
                 {
                     cmd.Connection = conn;
-                    cmd.CommandText = @"SELECT * FROM cliente";
+                    cmd.CommandText = @"SELECT * FROM filme";
 
                     using (MySqlDataAdapter da = new MySqlDataAdapter())
                     {
                         da.SelectCommand = cmd;
 
                         DataSet ds = new DataSet();
-                        da.Fill(ds, "Cliente");
+                        da.Fill(ds, "Filme");
 
                         List<Models.Filme> lstRetorno = ds.Tables["Filme"].AsEnumerable().Select(x => new Models.Filme
                         {
@@ -45,7 +45,7 @@ namespace Controller
             }
         }
 
-        public static void Salvar(Models.Cliente cliente)
+        public static void Salvar(Models.Filme filme)
         {
             using (MySqlConnection conn = new MySqlConnection(strConection))
             {
@@ -55,15 +55,26 @@ namespace Controller
                 {
                     cmd.Connection = conn;
 
-                    if (cliente.Id == 0)
-                        cmd.CommandText = @"INSERT INTO cliente (nome, email, cpf) VALUES (?nome, ?email, ?cpf);";
+                    if (filme.Id == 0)
+                        cmd.CommandText = @"INSERT INTO filme
+                                            (titulo, duracao, ano, idClassificacao, idProdutora, idGenero)
+                                            VALUES(?titulo, ?duracao, ?ano, ?idClassificacao, ?idProdutora, ?idGenero);";
                     else
-                        cmd.CommandText = @"UPDATE cliente SET nome = ?nome, email = ?email, cpf = ?cpf WHERE id = ?id;";
+                        cmd.CommandText = @"UPDATE filme
+                                                SET titulo = ?titulo,
+                                                    duracao = ?duracao,
+                                                    ano = ?ano,
+                                                    idClassificacao = ?idClassificacao,
+                                                    idProdutora = ?idProdutora,
+                                                    idGenero = ?idGenero
+                                            WHERE id = ?id;";
 
-                    cmd.Parameters.AddWithValue("?nome", cliente.Nome);
-                    cmd.Parameters.AddWithValue("?email", cliente.Email);
-                    cmd.Parameters.AddWithValue("?cpf", cliente.Cpf);
-                    cmd.Parameters.AddWithValue("?id", cliente.Id);
+                    cmd.Parameters.AddWithValue("?titulo", filme.Titulo);
+                    cmd.Parameters.AddWithValue("?duracao", filme.Duracao);
+                    cmd.Parameters.AddWithValue("?ano", filme.Ano);
+                    cmd.Parameters.AddWithValue("?idClassificacao", filme.ClassificacaoId);
+                    cmd.Parameters.AddWithValue("?idProdutora", filme.ProdutoraId);
+                    cmd.Parameters.AddWithValue("?idGenero", filme.GeneroId);
 
                     cmd.ExecuteNonQuery();
                 }
@@ -79,7 +90,7 @@ namespace Controller
                 using (MySqlCommand cmd = new MySqlCommand())
                 {
                     cmd.Connection = conn;
-                    cmd.CommandText = @"DELETE FROM cliente WHERE id = ?id";
+                    cmd.CommandText = @"DELETE FROM filme WHERE id = ?id";
                     cmd.Parameters.AddWithValue("?id", id);
 
                     cmd.ExecuteNonQuery();
@@ -131,9 +142,9 @@ namespace Controller
                                             c.faixaEtaria,
                                             g.tipo
                                         FROM filme AS f
-                                        INNER JOIN produtura AS p ON (p.id = f.idProdutora)
-                                        INNER JOIN genero AS p ON (p.id = f.idGenero)
-                                        INNER JOIN classificacao AS p ON (p.id = f.idClassificacao)
+                                        INNER JOIN produtora AS p ON (p.id = f.idProdutora)
+                                        INNER JOIN genero AS g ON (g.id = f.idGenero)
+                                        INNER JOIN classificacao AS c ON (c.id = f.idClassificacao)
                                         WHERE id = ?id";
 
                     cmd.Parameters.AddWithValue("?id", id);
