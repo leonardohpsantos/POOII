@@ -49,12 +49,11 @@ namespace Locadora.Controllers
 
         // POST: Filme/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, Models.Filme filme)
         {
             try
             {
-                // TODO: Add update logic here
-
+                Controller.Filme.Salvar(filme);
                 return RedirectToAction("Index");
             }
             catch
@@ -75,8 +74,7 @@ namespace Locadora.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
-
+                Controller.Filme.Excluir(id);
                 return RedirectToAction("Index");
             }
             catch

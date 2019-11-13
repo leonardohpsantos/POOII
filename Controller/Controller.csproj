@@ -75,6 +75,7 @@
   <ItemGroup>
     <Compile Include="Classificacao.cs" />
     <Compile Include="Cliente.cs" />
+    <Compile Include="Funcionario.cs" />
     <Compile Include="Filme.cs" />
     <Compile Include="Genero.cs" />
     <Compile Include="ItensSelecao.cs" />

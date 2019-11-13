@@ -1,0 +1,73 @@
+﻿@model Models.Filme
+
+@{
+    ViewBag.Title = "Excluir";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Apagar Filme</h2>
+
+<h3>Deseja realmente excluir esse filme?</h3>
+<div>
+    <h4>Filme</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Duracao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Duracao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ano)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ano)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClassificacaoId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClassificacaoId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GeneroId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GeneroId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProdutoraId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProdutoraId)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a class="btn btn-default" href="@Url.Action("Index")">Voltar</a>
+    </div>
+    }
+</div>

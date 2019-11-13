@@ -133,6 +133,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClassificacaoController.cs" />
+    <Compile Include="Controllers\FuncionarioController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\FilmeController.cs" />
     <Compile Include="Controllers\GeneroController.cs" />
@@ -200,6 +201,11 @@
     <Content Include="Views\Filme\Index.cshtml" />
     <Content Include="Views\Filme\Create.cshtml" />
     <Content Include="Views\Filme\Edit.cshtml" />
+    <Content Include="Views\Filme\Delete.cshtml" />
+    <Content Include="Views\Funcionario\Index.cshtml" />
+    <Content Include="Views\Funcionario\Create.cshtml" />
+    <Content Include="Views\Funcionario\Edit.cshtml" />
+    <Content Include="Views\Funcionario\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
