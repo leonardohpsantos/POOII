@@ -138,6 +138,7 @@
     <Compile Include="Controllers\FilmeController.cs" />
     <Compile Include="Controllers\GeneroController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocacaoController.cs" />
     <Compile Include="Controllers\ProdutoraController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -206,6 +207,8 @@
     <Content Include="Views\Funcionario\Create.cshtml" />
     <Content Include="Views\Funcionario\Edit.cshtml" />
     <Content Include="Views\Funcionario\Delete.cshtml" />
+    <Content Include="Views\Locacao\Index.cshtml" />
+    <Content Include="Views\Locacao\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

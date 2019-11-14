@@ -98,7 +98,7 @@ namespace Controller
             }
         }
 
-        public static Models.Filme BuscarPorId(int locacaoId)
+        public static Models.Locacao BuscarPorId(int locacaoId)
         {
             using (MySqlConnection conn = new MySqlConnection(strConection))
             {
@@ -107,19 +107,19 @@ namespace Controller
                 using (MySqlCommand cmd = new MySqlCommand())
                 {
                     cmd.Connection = conn;
-                    cmd.CommandText = @"SELECT * FROM filme WHERE id = ?id";
+                    cmd.CommandText = @"SELECT * FROM locacao WHERE id = ?id";
                     cmd.Parameters.AddWithValue("?id", locacaoId);
 
                     MySqlDataReader reader = cmd.ExecuteReader();
 
-                    Models.Filme retorno = new Models.Filme();
+                    Models.Locacao retorno = new Models.Locacao();
 
                     while (reader.Read())
                     {
                         retorno.Id = (int)reader["Id"];
-                        retorno.Duracao = (int)reader["duracao"];
-                        retorno.Ano = (int)reader["ano"];
-                        retorno.Titulo = (string)reader["titulo"];
+                        retorno.DataEntrega = (DateTime)reader["dataEntrega"];
+                        retorno.DataLocacao = (DateTime)reader["dataLocacao"];
+                        retorno.Numero = (int)reader["numero"];
                     }
 
                     return retorno;
@@ -127,7 +127,7 @@ namespace Controller
             }
         }
 
-        public static Models.Filme BuscarFilmeCompletoPorId(int id )
+        public static Models.Locacao BuscarFilmeCompletoPorId(int id )
         {
             using (MySqlConnection conn = new MySqlConnection(strConection))
             {
@@ -137,57 +137,57 @@ namespace Controller
                 {
                     cmd.Connection = conn;
                     cmd.CommandText = @"SELECT
-                                            f.*,
-                                            p.nome,
-                                            c.faixaEtaria,
-                                            g.tipo
-                                        FROM filme AS f
-                                        INNER JOIN produtora AS p ON (p.id = f.idProdutora)
-                                        INNER JOIN genero AS g ON (g.id = f.idGenero)
-                                        INNER JOIN classificacao AS c ON (c.id = f.idClassificacao)
-                                        WHERE f.id = ?id";
+	                                        l.*,
+	                                        f.titulo,
+	                                        fc.nome AS funcionarioNome,
+	                                        c.nome AS clienteNome
+                                        FROM locacao AS l
+                                        INNER JOIN filme AS f ON (f.id = l.idFilme)
+                                        INNER JOIN funcionario AS fc ON (fc.id = l.idFuncionario)
+                                        INNER JOIN cliente AS c ON (c.id = l.idCliente)
+                                        WHERE l.id = ?id";
 
                     cmd.Parameters.AddWithValue("?id", id);
 
                     MySqlDataReader reader = cmd.ExecuteReader();
 
-                    Models.Filme retorno = new Models.Filme();
+                    Models.Locacao retorno = new Models.Locacao();
 
                     while (reader.Read())
                     {
                         retorno.Id = (int)reader["Id"];
-                        retorno.Duracao = (int)reader["duracao"];
-                        retorno.Ano = (int)reader["ano"];
-                        retorno.Titulo = (string)reader["titulo"];
+                        retorno.Numero = (int)reader["numeroLocacao"];
+                        retorno.DataEntrega = (DateTime)reader["dataEntrega"];
+                        retorno.DataLocacao = (DateTime)reader["dataLocacao"];
 
-                        retorno.ClassificacaoId = (int)reader["idClassificacao"];
-                        retorno.GeneroId = (int)reader["idGenero"];
-                        retorno.ProdutoraId = (int)reader["idProdutora"];
+                        retorno.FilmeId = (int)reader["idFilme"];
+                        retorno.FuncionarioId = (int)reader["idFuncionario"];
+                        retorno.ClienteId = (int)reader["idCliente"];
 
-                        if (reader["idClassificacao"] != DBNull.Value)
+                        if (reader["idFilme"] != DBNull.Value)
                         {
-                            retorno.Classificacao = new Models.Classificacao
+                            retorno.Filme = new Models.Filme
                             {
-                                Id = (int)reader["idClassificacao"],
-                                FaixaEtaria = (string)reader["faixaEtaria"]
+                                Id = (int)reader["idFilme"],
+                                Titulo = (string)reader["titulo"]
                             };
                         }
 
-                        if (reader["idProdutora"] != DBNull.Value)
+                        if (reader["idFuncionario"] != DBNull.Value)
                         {
-                            retorno.Produtora = new Models.Produtora
+                            retorno.Funcionario = new Models.Funcionario
                             {
-                                Id = (int)reader["idProdutora"],
-                                Nome = (string)reader["nome"]
+                                Id = (int)reader["idFuncionario"],
+                                Nome = (string)reader["funcionarioNome"]
                             };
                         }
 
-                        if (reader["idGenero"] != DBNull.Value)
+                        if (reader["idCliente"] != DBNull.Value)
                         {
-                            retorno.Genero = new Models.Genero
+                            retorno.Cliente = new Models.Cliente
                             {
-                                Id = (int)reader["idGenero"],
-                                Tipo = (string)reader["tipo"]
+                                Id = (int)reader["idCliente"],
+                                Nome = (string)reader["clienteNome"]
                             };
                         }
                     }
