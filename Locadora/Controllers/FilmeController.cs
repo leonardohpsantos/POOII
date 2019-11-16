@@ -65,7 +65,7 @@ namespace Locadora.Controllers
         // GET: Filme/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(Controller.Filme.BuscarPorId(id));
         }
 
         // POST: Filme/Delete/5

@@ -47,5 +47,41 @@ namespace Controller
                 }
             }
         }
+        public class Funcionario
+        {
+            public static List<SelectListItem> GetSelectListItems
+            {
+                get
+                {
+                    List<SelectListItem> retorno = new List<SelectListItem>();
+                    Controller.Funcionario.Listar().ForEach(c => retorno.Add(new SelectListItem() { Text = c.Nome, Value = c.Id.ToString() }));
+                    return retorno;
+                }
+            }
+        }
+        public class Cliente
+        {
+            public static List<SelectListItem> GetSelectListItems
+            {
+                get
+                {
+                    List<SelectListItem> retorno = new List<SelectListItem>();
+                    Controller.Cliente.Listar().ForEach(c => retorno.Add(new SelectListItem() { Text = c.Nome, Value = c.Id.ToString() }));
+                    return retorno;
+                }
+            }
+        }
+        public class Filme
+        {
+            public static List<SelectListItem> GetSelectListItems
+            {
+                get
+                {
+                    List<SelectListItem> retorno = new List<SelectListItem>();
+                    Controller.Filme.Listar().ForEach(c => retorno.Add(new SelectListItem() { Text = c.Titulo, Value = c.Id.ToString() }));
+                    return retorno;
+                }
+            }
+        }
     }
 }

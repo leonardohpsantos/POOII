@@ -10,6 +10,7 @@ namespace Models
     {
         [Required]
         public string Nome { get; set; }
+        [Display(Name = "E-mail")]
         public string Email { get; set; }
         [Display(Name ="Documento")]
         public string Cpf { get; set; }

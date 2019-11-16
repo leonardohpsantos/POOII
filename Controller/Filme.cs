@@ -75,6 +75,7 @@ namespace Controller
                     cmd.Parameters.AddWithValue("?idClassificacao", filme.ClassificacaoId);
                     cmd.Parameters.AddWithValue("?idProdutora", filme.ProdutoraId);
                     cmd.Parameters.AddWithValue("?idGenero", filme.GeneroId);
+                    cmd.Parameters.AddWithValue("?id", filme.Id);
 
                     cmd.ExecuteNonQuery();
                 }

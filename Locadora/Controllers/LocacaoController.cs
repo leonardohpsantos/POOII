@@ -17,6 +17,9 @@ namespace Locadora.Controllers
         // GET: Locacao/Create
         public ActionResult Create()
         {
+            ViewBag.Funcionario = Controller.ItensSelecao.Funcionario.GetSelectListItems;
+            ViewBag.Cliente = Controller.ItensSelecao.Cliente.GetSelectListItems;
+            ViewBag.Filme = Controller.ItensSelecao.Filme.GetSelectListItems;
             return View();
         }
 

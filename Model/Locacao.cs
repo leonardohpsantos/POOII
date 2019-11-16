@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,8 +9,11 @@ namespace Models
 {
     public class Locacao : Basico
     {
+        [DisplayName("Data da Entrega")]
         public DateTime DataEntrega { get; set; }
+        [DisplayName("Data da Locação")]
         public DateTime DataLocacao { get; set; }
+        [DisplayName("Número")]
         public int Numero { get; set; }
 
         public int FilmeId { get; set; }
