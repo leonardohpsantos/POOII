@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Locação";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="col-sm-12 col-md-6">
+    @{Html.RenderAction("Criar", "Locacao");}
+</div>
+<div class="col-sm-12 col-md-6">
+    @{Html.RenderAction("Index", "Locacao");}
+</div>
+

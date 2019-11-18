@@ -9,9 +9,15 @@ namespace Locadora.Controllers
     public class LocacaoController : System.Web.Mvc.Controller
     {
         // GET: Locacao
+        [ChildActionOnly]
         public ActionResult Index()
         {
-            return View(Controller.Locacao.Listar());
+            return PartialView(Controller.Locacao.Listar());
+        }
+
+        public ActionResult Home()
+        {
+            return View();
         }
 
         // GET: Locacao/Create
@@ -23,6 +29,15 @@ namespace Locadora.Controllers
             return View();
         }
 
+        [ChildActionOnly]
+        public ActionResult Criar()
+        {
+            ViewBag.Funcionario = Controller.ItensSelecao.Funcionario.GetSelectListItems;
+            ViewBag.Cliente = Controller.ItensSelecao.Cliente.GetSelectListItems;
+            ViewBag.Filme = Controller.ItensSelecao.Filme.GetSelectListItems;
+            return PartialView("CriarPartial");
+        }
+
         // POST: Locacao/Create
         [HttpPost]
         public ActionResult Create(Models.Locacao locacao)
@@ -30,7 +45,7 @@ namespace Locadora.Controllers
             try
             {
                 Controller.Locacao.Salvar(locacao);
-                return RedirectToAction("Index");
+                return RedirectToAction("Home");
             }
             catch
             {
@@ -52,7 +67,7 @@ namespace Locadora.Controllers
             {
                 // TODO: Add update logic here
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Home");
             }
             catch
             {
@@ -74,7 +89,7 @@ namespace Locadora.Controllers
             {
                 // TODO: Add delete logic here
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Home");
             }
             catch
             {

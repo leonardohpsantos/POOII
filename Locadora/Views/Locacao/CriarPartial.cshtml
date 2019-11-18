@@ -1,0 +1,43 @@
+﻿@model Models.Locacao
+
+<h2>Realizar novo aluguel</h2>
+
+@using (Html.BeginForm("Create","Locacao"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ClienteId, "Cliente", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ClienteId", (List<SelectListItem>)ViewBag.Cliente, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ClienteId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FilmeId, "Filme", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("FilmeId", (List<SelectListItem>)ViewBag.Filme, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.FilmeId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FuncionarioId, "Funcionário", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("FuncionarioId", (List<SelectListItem>)ViewBag.Funcionario, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.FuncionarioId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Criar Reserva" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}

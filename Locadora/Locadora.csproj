@@ -209,6 +209,8 @@
     <Content Include="Views\Funcionario\Delete.cshtml" />
     <Content Include="Views\Locacao\Index.cshtml" />
     <Content Include="Views\Locacao\Create.cshtml" />
+    <Content Include="Views\Locacao\CriarPartial.cshtml" />
+    <Content Include="Views\Locacao\Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

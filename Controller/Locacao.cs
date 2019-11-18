@@ -22,7 +22,11 @@ namespace Controller
                 using (MySqlCommand cmd = new MySqlCommand())
                 {
                     cmd.Connection = conn;
-                    cmd.CommandText = @"SELECT * FROM locacao";
+                    cmd.CommandText = @"select
+	                                        l.*,
+	                                        c.nome
+                                        FROM locacao as l
+                                        inner join cliente as c on (c.id = l.idCliente)";
 
                     using (MySqlDataAdapter da = new MySqlDataAdapter())
                     {
@@ -36,7 +40,11 @@ namespace Controller
                             Id = x.Field<int>("id"),
                             DataEntrega = x.Field<DateTime>("dataEntrega"),
                             DataLocacao  = x.Field<DateTime>("dataLocacao"),
-                            Numero = x.Field<int>("numeroLocacao")
+                            Numero = x.Field<int>("numeroLocacao"),
+                            Cliente = new Models.Cliente
+                            {
+                                Nome = x.Field<string>("nome")
+                            }
                         }).ToList();
 
                         return lstRetorno;
@@ -56,9 +64,14 @@ namespace Controller
                     cmd.Connection = conn;
 
                     if (locacao.Id == 0)
+                    {
                         cmd.CommandText = @"INSERT INTO locacao
                                             (dataEntrega, dataLocacao, numeroLocacao, idCliente, idFilme, idFuncionario)
                                             VALUES(?dataEntrega, ?dataLocacao, ?numeroLocacao, ?idCliente, ?idFilme, ?idFuncionario);";
+
+                        locacao.DataEntrega = DateTime.Now.AddDays(2);
+                        locacao.DataLocacao = DateTime.Now;
+                    }
                     else
                         cmd.CommandText = @"UPDATE locacao
                                                 SET dataEntrega = ?dataEntrega,

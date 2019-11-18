@@ -1,45 +1,37 @@
 ﻿@model IEnumerable<Models.Locacao>
 
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+    <h2>Locações</h2>
+   
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DataEntrega)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataLocacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente.Nome)
+            </th>
+            <th></th>
+        </tr>
 
-<h2>Locações</h2>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataEntrega)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataLocacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cliente.Nome)
+            </td>
+            <td>
+                <a class="btn btn-success" href="@Url.Action("Edit", new { id = item.Id })">Editar</a>
+                <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.Id })">Excluir</a>
+            </td>
+        </tr>
+    }
 
-<p>
-    <a class="btn btn-primary" href="@Url.Action("Create")">Nova</a>
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.DataEntrega)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataLocacao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Numero)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataEntrega)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataLocacao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Numero)
-        </td>
-        <td>
-            <a class="btn btn-success" href="@Url.Action("Edit", new { id = item.Id })">Editar</a>
-            <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.Id })">Excluir</a>
-        </td>
-    </tr>
-}
-
-</table>
+    </table>
